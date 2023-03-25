@@ -31,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
         hitSoundEffect = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
         hitSoundEffect.Play();
         damageTaken += damage;
-        if (damageTaken > 30) //Cap at 14 damage taken
+        if (damageTaken > 30) //Cap at 30 damage taken
         {
             damageTaken = 30;
         }
