@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MoveScript : MonoBehaviour
+public class MoveScript : MonoBehaviour //This script doesnt just contain move elements because I used the same script for a bunch of things including checkpoints
 {
 
     private float horizontal;
@@ -42,6 +42,8 @@ public class MoveScript : MonoBehaviour
 
     public AudioSource jumpSoundEffect;
     public AudioSource checkpointSoundEffect;
+
+    private bool zeroVelocity = false;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -114,6 +116,11 @@ public class MoveScript : MonoBehaviour
         if (Player1WinScreen.activeSelf && Player2WinScreen.activeSelf) //If both players win, restart the game
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (zeroVelocity)
+        {
+            rb.velocity = new Vector2(0, 0);
         }
     }
 
@@ -243,7 +250,7 @@ public class MoveScript : MonoBehaviour
         if (collision.tag == "End")
         {
             Player1WinScreen.SetActive(true);
-            Destroy(gameObject);
+            zeroVelocity = true;
         }
     }
 }

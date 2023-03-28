@@ -41,6 +41,8 @@ public class Player2MoveScript : MonoBehaviour
     public AudioSource jumpSoundEffect;
     public AudioSource checkpointSoundEffect;
 
+    private bool zeroVelocity = false;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -107,6 +109,10 @@ public class Player2MoveScript : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimeCounter = 0f;
+        }
+        if (zeroVelocity)
+        {
+            rb.velocity = new Vector2(0, 0);
         }
     }
 
@@ -236,7 +242,7 @@ public class Player2MoveScript : MonoBehaviour
         if (collision.tag == "End")
         {
             Player2WinScreen.SetActive(true);
-            Destroy(gameObject);
+            zeroVelocity = true;
         }
     }
 }
