@@ -45,6 +45,8 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
 
     private bool zeroVelocity = false;
 
+    public MainMenu mainMenu;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -56,11 +58,13 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
     {
         jumpSoundEffect = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<AudioSource>();
         checkpointSoundEffect = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
+        //mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>
     }
 
     // Update is called once per frame
     void Update()
     {
+        horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
         horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
 
         WallSlide(); //all functions to be run continously
@@ -115,7 +119,7 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
 
         if (Player1WinScreen.activeSelf && Player2WinScreen.activeSelf) //If both players win, restart the game
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //LoadNextLevel();
         }
 
         if (zeroVelocity)

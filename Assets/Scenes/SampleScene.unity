@@ -34758,7 +34758,7 @@ PrefabInstance:
     - target: {fileID: 737511118186027494, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: Player2WinScreen
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 775684400}
     - target: {fileID: 737511118186027516, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: m_Name
       value: Player
