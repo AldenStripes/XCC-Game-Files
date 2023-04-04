@@ -728,8 +728,8 @@ GameObject:
   - component: {fileID: 350249646}
   - component: {fileID: 350249647}
   m_Layer: 5
-  m_Name: Main Menu
-  m_TagString: Untagged
+  m_Name: Main_Menu
+  m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1269,7 +1269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1647,7 +1647,7 @@ AudioSource:
   m_GameObject: {fileID: 937755393}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 36d86a29ae7909b48823e362194ec7b4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 09777301f53a1d64d8b90be2325fe6b4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -1743,7 +1743,7 @@ AudioSource:
   m_GameObject: {fileID: 937755393}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 36d86a29ae7909b48823e362194ec7b4, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5f1883493d5859746b1125c58d03d4ac, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}

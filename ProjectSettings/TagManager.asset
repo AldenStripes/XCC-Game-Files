@@ -11,6 +11,7 @@ TagManager:
   - JumpSound
   - DeathSound
   - CheckpointSound
+  - Menu
   layers:
   - Default
   - TransparentFX

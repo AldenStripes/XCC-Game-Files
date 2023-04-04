@@ -207,7 +207,7 @@ public class Player2MoveScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) //Detect checkpoints - not finished yet
+    private void OnTriggerEnter2D(Collider2D collision) //Detect checkpoints
     {
         if (collision.tag == "Checkpoint 1")
         {
