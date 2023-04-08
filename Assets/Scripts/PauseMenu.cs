@@ -8,10 +8,11 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
-    public MainMenu script;
+    public Animator transition;
+
     void Start()
     {
-        script = GameObject.FindGameObjectWithTag("Menu").GetComponent<MainMenu>();
+        
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        Debug.Log("Game Resumed");
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -45,12 +47,26 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        StartCoroutine(script.LoadLevel(SceneManager.GetActiveScene().buildIndex - 1));
+        Debug.Log("Menu Loaded");
+        Time.timeScale = 1f;
+        StartCoroutine(LoadLevel(0));
     }
 
     public void QuitGame()
     {
         Debug.Log("Game Quitted");
         Application.Quit();
+    }
+
+    public IEnumerator LoadLevel(int levelIndex)
+    {
+        //Play animation
+        transition.SetTrigger("Start");
+
+        //Wait
+        yield return new WaitForSeconds(1f);
+
+        //Load scene
+        SceneManager.LoadScene(levelIndex);
     }
 }

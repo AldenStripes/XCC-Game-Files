@@ -3107,7 +3107,7 @@ RectTransform:
   - {fileID: 942497095}
   - {fileID: 1441714917}
   m_Father: {fileID: 1906231810}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3127,7 +3127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5871,6 +5871,11 @@ SpriteRenderer:
 --- !u!224 &464923120 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8354879414857558728, guid: 9177e761fe9b85f4880bdc8eb6b65ab9, type: 3}
+  m_PrefabInstance: {fileID: 1691193500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &464923121 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8354879414857558735, guid: 9177e761fe9b85f4880bdc8eb6b65ab9, type: 3}
   m_PrefabInstance: {fileID: 1691193500}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &478838748
@@ -26907,7 +26912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8354879414857558728, guid: 9177e761fe9b85f4880bdc8eb6b65ab9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8354879414857558728, guid: 9177e761fe9b85f4880bdc8eb6b65ab9, type: 3}
       propertyPath: m_AnchorMax.x
@@ -28816,8 +28821,8 @@ RectTransform:
   m_Children:
   - {fileID: 30607930}
   - {fileID: 1130626433}
-  - {fileID: 464923120}
   - {fileID: 231004966}
+  - {fileID: 464923120}
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28839,6 +28844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 231004965}
+  transition: {fileID: 464923121}
 --- !u!1 &1927989821
 GameObject:
   m_ObjectHideFlags: 0
