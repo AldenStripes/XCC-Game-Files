@@ -35804,10 +35804,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 737511118186027488, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511118186027489, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511118186027489, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511118186027489, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_Size.x
+      value: 10.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511118186027489, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_Size.y
+      value: 10.8
+      objectReference: {fileID: 0}
     - target: {fileID: 737511118186027489, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 359a6237839efd0448a65a8ecbb37f2f, type: 3}
+      objectReference: {fileID: 21300000, guid: 2a102807a9fd1444bb474274653b968c, type: 3}
     - target: {fileID: 737511118186027494, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: flag
       value: 
@@ -35836,6 +35856,14 @@ PrefabInstance:
       propertyPath: Player2WinScreen
       value: 
       objectReference: {fileID: 775684400}
+    - target: {fileID: 737511118186027495, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511118186027495, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.16
+      objectReference: {fileID: 0}
     - target: {fileID: 737511118186027516, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -36129,6 +36157,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ddcc582716ab00546b42038ade518c58, type: 3}
+    - target: {fileID: 7749391565587243701, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749391565587243701, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749391565587243701, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7749391566064136867, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
       propertyPath: m_RootOrder
       value: 2
