@@ -58,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
+    // this is supposed to be load level transition (fade)
     public IEnumerator LoadLevel(int levelIndex)
     {
         //Play animation
