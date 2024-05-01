@@ -62,24 +62,22 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
+    void Update() {
         horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
 
         WallSlide(); //all functions to be run continously
         WallJump();
-        if (!isWallJumping)
-        {
+
+        if (!isWallJumping) {
             Flip();
         }
 
+        // Allows player to jump 0.2s after leaving the ground to give some leniency (called coyote time for some reason)
         if (IsGrounded()) //coyote time section
         {
             coyoteTimeCounter = coyoteTime;
         }
-        else
-        {
+        else {
             coyoteTimeCounter -= Time.deltaTime;
         }
 
@@ -96,23 +94,24 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
         {
             doubleJump = false;
         }
-        if (IsWalled() && !Input.GetKey(KeyCode.W))
-        {
+        if (IsWalled() && !Input.GetKey(KeyCode.W)) {
             doubleJump = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.W)) //jump section
+        // if (!IsGrounded()) { // so when you walk off a ledge you can still double jump
+        //     doubleJump = true;
+        // }
+        if (Input.GetKeyDown(KeyCode.W)) //if player presses jump
         {
             if ((coyoteTimeCounter > 0f || doubleJump == true) && jumpBufferCounter > 0f)
             {
-                jumpSoundEffect.Play();
-                rb.velocity = Vector2.up * jumpPower;
-                doubleJump = !doubleJump;
-                jumpBufferCounter = 0f;
+                jumpSoundEffect.Play(); // play jump sound affect
+                rb.velocity = Vector2.up * jumpPower; // move velocity of player upward
+                doubleJump = !doubleJump; // set double jump-able to false
+                jumpBufferCounter = 0f; 
             }
         }
-        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f)
-        {
+
+        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimeCounter = 0f;
         }
@@ -122,8 +121,7 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
             //LoadNextLevel();
         }
 
-        if (zeroVelocity)
-        {
+        if (zeroVelocity) {
             rb.velocity = new Vector2(0, 0);
         }
     }

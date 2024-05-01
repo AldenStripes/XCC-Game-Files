@@ -3074,7 +3074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SMASH DASH
+  m_text: RETRO RUN
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7168ad3aa0ec37b47bbe58692b31bb8a, type: 2}
   m_sharedMaterial: {fileID: 7015536989216856854, guid: 7168ad3aa0ec37b47bbe58692b31bb8a, type: 2}
