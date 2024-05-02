@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Player2MoveScript : MonoBehaviour
+public class MoveScript : MonoBehaviour //This script doesnt just contain move elements because I used the same script for a bunch of things including checkpoints
 {
 
     private float horizontal;
@@ -17,7 +18,7 @@ public class Player2MoveScript : MonoBehaviour
     private float wallJumpingDirection;
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
-    private float wallJumpingDuration = 0.2f;
+    private float wallJumpingDuration = 0.3f;
     private Vector2 wallJumpingPower = new Vector2(60f, 15f);
 
     private bool doubleJump;
@@ -32,10 +33,11 @@ public class Player2MoveScript : MonoBehaviour
     public Transform respawnPoint;
     public Transform respawnPoint2;
 
-    public SpriteRenderer flagGreen;
-    public SpriteRenderer flagGreen2;
+    public SpriteRenderer flagBlue;
+    public SpriteRenderer flagBlue2;
     private int flagNum = 1;
 
+    public GameObject Player1WinScreen;
     public GameObject Player2WinScreen;
 
     public AudioSource jumpSoundEffect;
@@ -43,41 +45,43 @@ public class Player2MoveScript : MonoBehaviour
 
     private bool zeroVelocity = false;
 
+    public MainMenu mainMenu;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         jumpSoundEffect = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<AudioSource>();
         checkpointSoundEffect = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
+        //mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        horizontal = Input.GetAxisRaw("Vertical"); //THIS IS NAMED VERTICAL BECAUSE I CHANGED THE KEYBINDS IN Edit >> Project Settings >> Vertical WHERE I MADE IT "left" and "right" INSTEAD OF "s" and "w" SO THAT PLAYER 2 MOVES ON ARROW KEYS
+    void Update() {
+        horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
 
-        WallSlide();
+        WallSlide(); //all functions to be run continously
         WallJump();
-        if (!isWallJumping)
-        {
+
+        if (!isWallJumping) {
             Flip();
         }
 
+        // Allows player to jump 0.2s after leaving the ground to give some leniency (called coyote time for some reason)
         if (IsGrounded()) //coyote time section
         {
             coyoteTimeCounter = coyoteTime;
         }
-        else
-        {
+        else {
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //jump buffer section
+        if (Input.GetKeyDown(KeyCode.W)) //jump buffer section
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -86,32 +90,39 @@ public class Player2MoveScript : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (IsGrounded() && !Input.GetKey(KeyCode.UpArrow)) //double jump section
+        if (IsGrounded() && !Input.GetKey(KeyCode.W)) //double jump section
         {
             doubleJump = false;
         }
-        if (IsWalled() && !Input.GetKey(KeyCode.UpArrow))
-        {
+        if (IsWalled() && !Input.GetKey(KeyCode.W)) {
             doubleJump = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //jump section
+        // if (!IsGrounded()) { // so when you walk off a ledge you can still double jump
+        //     doubleJump = true;
+        // }
+        if (Input.GetKeyDown(KeyCode.W)) //if player presses jump
         {
             if ((coyoteTimeCounter > 0f || doubleJump == true) && jumpBufferCounter > 0f)
             {
-                jumpSoundEffect.Play();
-                rb.velocity = Vector2.up * jumpPower;
-                doubleJump = !doubleJump;
-                jumpBufferCounter = 0f;
+                jumpSoundEffect.Play(); // play jump sound affect
+                rb.velocity = Vector2.up * jumpPower; // move velocity of player upward
+                doubleJump = !doubleJump; // set double jump-able to false
+                jumpBufferCounter = 0f; 
             }
         }
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0f)
-        {
+
+        // The longer you hold the jump button, the higher you go (up to a point)
+        if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimeCounter = 0f;
         }
-        if (zeroVelocity)
+
+        if (Player1WinScreen.activeSelf && Player2WinScreen.activeSelf) //If both players win, restart the game
         {
+            //LoadNextLevel();
+        }
+
+        if (zeroVelocity) {
             rb.velocity = new Vector2(0, 0);
         }
     }
@@ -157,7 +168,7 @@ public class Player2MoveScript : MonoBehaviour
 
             CancelInvoke(nameof(StopWallJumping));
         }
-        else if (wallDoubleJump && Input.GetKeyDown(KeyCode.UpArrow) && !IsGrounded())
+        else if (wallDoubleJump && Input.GetKeyDown(KeyCode.W) && !IsGrounded())
         {
             jumpSoundEffect.Play();
             rb.velocity = Vector2.up * jumpPower;
@@ -167,12 +178,12 @@ public class Player2MoveScript : MonoBehaviour
         {
             wallDoubleJump = false;
         }
-        else
+        else 
         {
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallJumpingCounter > 0f)
+        if (Input.GetKeyDown(KeyCode.W) && wallJumpingCounter > 0f)
         {
             isWallJumping = true;
             jumpSoundEffect.Play();
@@ -212,11 +223,11 @@ public class Player2MoveScript : MonoBehaviour
         if (collision.tag == "Checkpoint 1")
         {
             checkpointSoundEffect.Play();
-            Debug.Log("Player 2 touched Checkpoint 1");
-            respawnPoint2.position = transform.position;
+            Debug.Log("Player 1 touched Checkpoint 1");
+            respawnPoint.position = transform.position;
             if (flagNum == 1)
             {
-                flagGreen.color = Color.green;
+                flagBlue.color = Color.blue;
                 flagNum = 2;
             }
             else
@@ -227,21 +238,21 @@ public class Player2MoveScript : MonoBehaviour
         else if (collision.tag == "Checkpoint 2")
         {
             checkpointSoundEffect.Play();
-            Debug.Log("Player 2 touched Checkpoint 2");
-            respawnPoint2.position = transform.position;
+            Debug.Log("Player 1 touched Checkpoint 2");
+            respawnPoint.position = transform.position;
             if (flagNum == 2)
             {
-                flagGreen2.color = Color.green;
+                flagBlue2.color = Color.blue;
                 flagNum = 3;
             }
-            else
+            else 
             {
                 flagNum = 3;
             }
         }
         if (collision.tag == "End")
         {
-            Player2WinScreen.SetActive(true);
+            Player1WinScreen.SetActive(true);
             zeroVelocity = true;
         }
     }
