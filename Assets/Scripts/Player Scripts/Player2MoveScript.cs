@@ -49,12 +49,14 @@ public class Player2MoveScript : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-    private Animator anim;
+    private Animator animRun;
+    private Animator animJump;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animRun = GetComponent<Animator>();
+        animJump = GetComponent<Animator>();
         jumpSoundEffect = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<AudioSource>();
         checkpointSoundEffect = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
     }
@@ -65,9 +67,9 @@ public class Player2MoveScript : MonoBehaviour
         horizontal = Input.GetAxisRaw("Vertical"); //THIS IS NAMED VERTICAL BECAUSE I CHANGED THE KEYBINDS IN Edit >> Project Settings >> Vertical WHERE I MADE IT "left" and "right" INSTEAD OF "s" and "w" SO THAT PLAYER 2 MOVES ON ARROW KEYS
 
         if (horizontal==0) { // if player not moving
-            anim.SetBool("isRunning", false);
+            animRun.SetBool("isRunning", false);
         }   else {
-            anim.SetBool("isRunning", true);
+            animRun.SetBool("isRunning", true);
         }
 
         WallSlide();
@@ -80,10 +82,10 @@ public class Player2MoveScript : MonoBehaviour
         if (IsGrounded()) //coyote time section
         {
             coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
+            animJump.SetBool("isJumping", false);
+        } else {
             coyoteTimeCounter -= Time.deltaTime;
+            animJump.SetBool("isJumping", true);
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow)) //jump buffer section

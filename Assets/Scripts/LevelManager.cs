@@ -25,7 +25,7 @@ public class LevelManager : MonoBehaviour
  
     public void Respawn()
     {
-        // deathSoundEffect.Play();
+        deathSoundEffect.Play();
         playerPrefab.transform.position = respawnPoint.transform.position;
         Debug.Log("Respawned Player 1");
     }

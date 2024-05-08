@@ -54,12 +54,14 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-    private Animator anim;
+    private Animator animRun;
+    private Animator animJump;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        animRun = GetComponent<Animator>();
+        animJump = GetComponent<Animator>();
         jumpSoundEffect = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<AudioSource>();
         checkpointSoundEffect = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
         //mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>
@@ -70,9 +72,9 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
         horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
 
         if (horizontal == 0) { // if player not moving
-            anim.SetBool("isRunning", false);
+            animRun.SetBool("isRunning", false);
         }   else {
-            anim.SetBool("isRunning", true);
+            animRun.SetBool("isRunning", true);
         }
 
         WallSlide(); //all functions to be run continously
@@ -86,9 +88,11 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
         if (IsGrounded()) //coyote time section
         {
             coyoteTimeCounter = coyoteTime;
+            animJump.SetBool("isJumping", false);
         }
         else {
             coyoteTimeCounter -= Time.deltaTime;
+            animJump.SetBool("isJumping", true);
         }
 
         if (Input.GetKeyDown(KeyCode.W)) //jump buffer section
