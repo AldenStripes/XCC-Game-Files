@@ -31,15 +31,14 @@ public class Player2Attack : MonoBehaviour
             {
                 playerAnim.SetTrigger("Attack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-                for (int i = 0; i < enemiesToDamage.Length; i++)
-                {
+                for (int i = 0; i < enemiesToDamage.Length; i++) {
                     enemiesToDamage[i].GetComponent<PlayerHealth>().TakeDamage(damage);
-                    if (transform.position.x > player1.position.x) // If player 2 is to the right of player 1
-                    {
+
+                    if (transform.position.x > player1.position.x) {
+                        // if player hits player 1 who is to the left
                         rb.velocity = new Vector2(-(script.damageTaken), rb.velocity.y);
-                    }
-                    else
-                    {
+                    } else {
+                        // if player hits player 1 who is to the right
                         rb.velocity = new Vector2(script.damageTaken, rb.velocity.y);
                     }
                 }
@@ -52,6 +51,7 @@ public class Player2Attack : MonoBehaviour
         }
     }
 
+    // Allows Unity to visualize the attack radius in editor
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

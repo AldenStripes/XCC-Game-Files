@@ -3678,7 +3678,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 533132186fb802e4cb0c8a31d544b654, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.21176471}
+  m_Color: {r: 1, g: 0.25370216, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3697,7 +3697,7 @@ Transform:
   m_GameObject: {fileID: 307464121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 180.0133, y: -2.9, z: 0}
-  m_LocalScale: {x: 66.70063, y: 0.17373388, z: 1}
+  m_LocalScale: {x: 66.70063, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 447218256}
@@ -11711,7 +11711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4428f9c973c60104dbc4c43bffdfd643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTimeBtwAttack: 0.4
+  startTimeBtwAttack: 0.3
   attackPos: {fileID: 1022246314}
   whatIsEnemies:
     serializedVersion: 2
@@ -35837,6 +35837,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -52.02914
       objectReference: {fileID: 0}
+    - target: {fileID: 737511117190299276, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511117190299276, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.26979002
+      objectReference: {fileID: 0}
+    - target: {fileID: 737511117190299276, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.14848696
+      objectReference: {fileID: 0}
     - target: {fileID: 737511117190299279, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: m_Layer
       value: 9
@@ -36031,7 +36043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1998141637747376652, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: startTimeBtwAttack
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1998141637747376652, guid: 732b47d3ed41bb24abcdcd2db4dfaa2a, type: 3}
       propertyPath: whatIsEnemies.m_Bits
@@ -36177,6 +36189,18 @@ PrefabInstance:
     - target: {fileID: 7749391565390323953, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749391565390323966, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.8117647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749391565390323966, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.27058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 7749391565390323966, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.14901961
       objectReference: {fileID: 0}
     - target: {fileID: 7749391565587243656, guid: 36efc594ba45afe4ab64429f79fa47b0, type: 3}
       propertyPath: flag2
