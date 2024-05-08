@@ -47,15 +47,19 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
 
     public MainMenu mainMenu;
 
+    // SerializeField allows Unity to see the component even though it is private
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
-    
+
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         jumpSoundEffect = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<AudioSource>();
         checkpointSoundEffect = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
         //mainMenu = GameObject.Find("MainMenu").GetComponent<MainMenu>
@@ -64,6 +68,12 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
     // Update is called once per frame
     void Update() {
         horizontal = Input.GetAxisRaw("Horizontal"); //returns -1, 0, or 1 depending on the direction were moving
+
+        if (horizontal == 0) { // if player not moving
+            anim.SetBool("isRunning", false);
+        }   else {
+            anim.SetBool("isRunning", true);
+        }
 
         WallSlide(); //all functions to be run continously
         WallJump();
@@ -102,12 +112,17 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
         // }
         if (Input.GetKeyDown(KeyCode.W)) //if player presses jump
         {
-            if ((coyoteTimeCounter > 0f || doubleJump == true) && jumpBufferCounter > 0f)
-            {
+            if ((coyoteTimeCounter>0f && !doubleJump) && jumpBufferCounter > 0f) {
                 jumpSoundEffect.Play(); // play jump sound affect
                 rb.velocity = Vector2.up * jumpPower; // move velocity of player upward
                 doubleJump = !doubleJump; // set double jump-able to false
                 jumpBufferCounter = 0f; 
+            }
+            if (!IsGrounded() && doubleJump && jumpBufferCounter > 0f) {
+                rb.velocity = Vector2.up * jumpPower; // jump
+                jumpSoundEffect.Play();
+                doubleJump = false;
+                jumpBufferCounter = 0f;
             }
         }
 
@@ -235,8 +250,7 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
                 flagNum = 2;
             }
         }
-        else if (collision.tag == "Checkpoint 2")
-        {
+        else if (collision.tag == "Checkpoint 2") {
             checkpointSoundEffect.Play();
             Debug.Log("Player 1 touched Checkpoint 2");
             respawnPoint.position = transform.position;

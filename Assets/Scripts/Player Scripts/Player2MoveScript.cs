@@ -49,9 +49,12 @@ public class Player2MoveScript : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         jumpSoundEffect = GameObject.FindGameObjectWithTag("JumpSound").GetComponent<AudioSource>();
         checkpointSoundEffect = GameObject.FindGameObjectWithTag("CheckpointSound").GetComponent<AudioSource>();
     }
@@ -60,6 +63,12 @@ public class Player2MoveScript : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Vertical"); //THIS IS NAMED VERTICAL BECAUSE I CHANGED THE KEYBINDS IN Edit >> Project Settings >> Vertical WHERE I MADE IT "left" and "right" INSTEAD OF "s" and "w" SO THAT PLAYER 2 MOVES ON ARROW KEYS
+
+        if (horizontal==0) { // if player not moving
+            anim.SetBool("isRunning", false);
+        }   else {
+            anim.SetBool("isRunning", true);
+        }
 
         WallSlide();
         WallJump();
