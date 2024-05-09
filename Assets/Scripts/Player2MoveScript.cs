@@ -31,9 +31,11 @@ public class Player2MoveScript : MonoBehaviour
 
     public Transform respawnPoint;
     public Transform respawnPoint2;
+    public Transform respawnPoint3;
 
     public SpriteRenderer flagGreen;
     public SpriteRenderer flagGreen2;
+    public SpriteRenderer flagGreen3;
     private int flagNum = 1;
 
     public GameObject Player2WinScreen;
@@ -239,6 +241,22 @@ public class Player2MoveScript : MonoBehaviour
                 flagNum = 3;
             }
         }
+        else if (collision.tag == "Checkpoint 3")
+        {
+            checkpointSoundEffect.Play();
+            Debug.Log("Player 2 touched Checkpoint 3");
+            respawnPoint2.position = transform.position;
+            if (flagNum == 3)
+            {
+                flagGreen2.color = Color.green;
+                flagNum = 4;
+            }
+            else
+            {
+                flagNum = 4;
+            }
+        }
+
         if (collision.tag == "End")
         {
             Player2WinScreen.SetActive(true);

@@ -32,9 +32,11 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
 
     public Transform respawnPoint;
     public Transform respawnPoint2;
+    public Transform respawnPoint3;
 
     public SpriteRenderer flagBlue;
     public SpriteRenderer flagBlue2;
+    public SpriteRenderer flagBlue3;
     private int flagNum = 1;
 
     public GameObject Player1WinScreen;
@@ -251,6 +253,22 @@ public class MoveScript : MonoBehaviour //This script doesnt just contain move e
                 flagNum = 3;
             }
         }
+        else if (collision.tag == "Checkpoint 3")
+        {
+            checkpointSoundEffect.Play();
+            Debug.Log("Player 1 touched Checkpoint 3");
+            respawnPoint.position = transform.position;
+            if (flagNum == 3)
+            {
+                flagBlue2.color = Color.blue;
+                flagNum = 4;
+            }
+            else
+            {
+                flagNum = 4;
+            }
+        }
+
         if (collision.tag == "End")
         {
             Player1WinScreen.SetActive(true);
