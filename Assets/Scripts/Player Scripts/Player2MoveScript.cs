@@ -88,7 +88,7 @@ public class Player2MoveScript : MonoBehaviour
             animJump.SetBool("isJumping", true);
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //jump buffer section
+        if (Input.GetKeyDown(KeyCode.I)) //jump buffer section
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -97,16 +97,16 @@ public class Player2MoveScript : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        if (IsGrounded() && !Input.GetKey(KeyCode.UpArrow)) //double jump section
+        if (IsGrounded() && !Input.GetKey(KeyCode.I)) //double jump section
         {
             doubleJump = false;
         }
-        if (IsWalled() && !Input.GetKey(KeyCode.UpArrow))
+        if (IsWalled() && !Input.GetKey(KeyCode.I))
         {
             doubleJump = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) //jump section
+        if (Input.GetKeyDown(KeyCode.I)) //jump section
         {
             if ((coyoteTimeCounter > 0f || doubleJump == true) && jumpBufferCounter > 0f)
             {
@@ -118,7 +118,7 @@ public class Player2MoveScript : MonoBehaviour
         }
 
         // If you hold down the jump button for longer you will jump higher (up to a point)
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rb.velocity.y > 0f)
+        if (Input.GetKeyUp(KeyCode.I) && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
             coyoteTimeCounter = 0f;
@@ -170,7 +170,7 @@ public class Player2MoveScript : MonoBehaviour
 
             CancelInvoke(nameof(StopWallJumping));
         }
-        else if (wallDoubleJump && Input.GetKeyDown(KeyCode.UpArrow) && !IsGrounded())
+        else if (wallDoubleJump && Input.GetKeyDown(KeyCode.I) && !IsGrounded())
         {
             jumpSoundEffect.Play();
             rb.velocity = Vector2.up * jumpPower;
@@ -185,7 +185,7 @@ public class Player2MoveScript : MonoBehaviour
             wallJumpingCounter -= Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && wallJumpingCounter > 0f)
+        if (Input.GetKeyDown(KeyCode.I) && wallJumpingCounter > 0f)
         {
             isWallJumping = true;
             jumpSoundEffect.Play();

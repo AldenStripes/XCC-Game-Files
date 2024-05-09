@@ -27,7 +27,7 @@ public class Player2Attack : MonoBehaviour
         if (timeBtwAttack <= 0)
         {
             //then you can attack
-            if (Input.GetKey(KeyCode.Keypad2))
+            if (Input.GetKey(KeyCode.U))
             {
                 playerAnim.SetTrigger("Attack");
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);

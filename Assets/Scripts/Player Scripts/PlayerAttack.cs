@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
         if (timeBtwAttack <= 0)
         {
             //then you can attack
-            if (Input.GetKey(KeyCode.T))
+            if (Input.GetKey(KeyCode.E))
             {
                 playerAnim.SetTrigger("Attack");
                 // Array stores all enemies found inside the circle hit
