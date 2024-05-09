@@ -1,6 +1,6 @@
 # XCC Game Files
-This repo contains my game files for my school game jam game (2022-2023 Gr. 9 Year)
+This repo contains the game files for Retro Run on Unity.
 
 XCC stands for Xavier Coding Club
 
-Update: I won
+Team: Alden W, Aryan V, Sophia X, Sophia L
