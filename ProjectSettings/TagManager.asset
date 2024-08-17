@@ -12,6 +12,7 @@ TagManager:
   - DeathSound
   - CheckpointSound
   - Menu
+  - Checkpoint 3
   layers:
   - Default
   - TransparentFX
